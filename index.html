@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Project</title>
+</head>
+
+<body>
+    <script>
+        function testResponse() {
+            var queryURL = "https://api.spotify.com/v1/search?q=Muse&type=track%2Cartist&market=US&limit=10&offset=5" - H "Accept: application/json" - H "Content-Type: application/json" - H "Authorization: Bearer BQAA4utZUFxNU_BTJEopuqyo-5HBKWTThyu4D_EhIekVviSchSSAA5NuCnpRnWvxtGJWZVRwkGOyiTqjuzoKrRWDqFVG_y1DZ11ohJ2mNNp1HZicD8BCgAIT1iW53sysifFEMuysfC7dgk4";
+
+            // Creating an AJAX call
+            $.ajax({
+                url: queryURL,
+                method: "GET"
+            }).then(function(response) {
+                console.log(response);
+
+            });
+
+        }
+        testResponse();
+    </script>
+
+</body>
+
+</html>
