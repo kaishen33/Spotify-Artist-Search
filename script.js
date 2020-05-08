@@ -5,13 +5,13 @@ $("#find-music").on("click",function(event){
     $(".forecast1").empty();
 
     var i = 0
-    var music =$("#music-input").val();
+    var artistName =$("#music-input").val();
 
     //This is DEEZER api call
     var deezerApi = {
     "async": true,
     "crossDomain": true,
-    "url": "https://deezerdevs-deezer.p.rapidapi.com/search?q=" + music,
+    "url": "https://deezerdevs-deezer.p.rapidapi.com/search?q=" + artistName,
     "method": "GET",
     "headers": {
         "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
@@ -29,40 +29,49 @@ $("#find-music").on("click",function(event){
             var work = $("<div>");
             var workP = $("<p>");
             workP.text(JSON.stringify(response.data[i]));
-            var songTitle = (response.data[i].title);
-            console.log(songTitle);
+            var songName = (response.data[i].title);
+            console.log(songName);
 
         workP.attr("Class", "workP");
         work.attr('class','work');
         //($(".work")).append(workP);
       ($(".forecast1")).append(workP);
+
+
+      var lyricsApi = {
+        "async": true,
+        "crossDomain": true,
+        "url": "https://canarado-lyrics.p.rapidapi.com/lyrics/" + songName + artistName,
+        "method": "GET",
+        "headers": {
+            "x-rapidapi-host": "canarado-lyrics.p.rapidapi.com",
+            "x-rapidapi-key": "d8bb7331d7mshcb58195d90da480p15ca06jsn0559dad38ac9"
+        }
+    }
+    
+    $.ajax(lyricsApi).done(function(response) {
+        console.log(response);
+    
+        function displayArtistInfo() {
+            var displayArtistName = response.content[0].artist;
+            var displaySongTitle = response.content[0].title;
+            $("#artistName").text(displayArtistName);
+            $("#artistSongName").text(displaySongTitle);
+        }
+        displayArtistInfo();
+    
+        function displaySongLyrics() {
+            var songLyrics = response.content[0].lyrics;
+            $("#lyricsP").text(songLyrics);
+        }
+        displaySongLyrics();
+    
+    
+    
+    });
             
         });
     
       
 });
 });
-
-
-
-
-
-
-
-
-
-//This is Genuis api call
-// var geniusApi = {
-//     "async": true,
-//     "crossDomain": true,
-//     "url": "https://genius.p.rapidapi.com/search?q=Kendrick%20Lamar",
-//     "method": "GET",
-//     "headers": {
-//         "x-rapidapi-host": "genius.p.rapidapi.com",
-//         "x-rapidapi-key": "d8bb7331d7mshcb58195d90da480p15ca06jsn0559dad38ac9"
-//     }
-// }
-
-// $.ajax(geniusApi).done(function(response) {
-//     console.log(response);
-// });
