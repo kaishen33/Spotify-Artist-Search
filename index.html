@@ -10,21 +10,27 @@
 </head>
 
 <body>
+    <!--Container with Search-->
+    <div class="container"></div>
+        <form id="music-form">
+            <label for="music-input">Search for a song/artist</label>
+            <input type="text" id="music-input"><br>
 
-    <form id="music-form">
-        <label for="music-input">Search for a song/artist</label>
-        <input type="text" id="music-input"><br>
+            <input id="findMusicBtn" type="submit" value="Music Search">
+            <button type="button" id="nextSongBtn" class="btn btn-outline-primary">Next Song</button>
+        </form>
+    </div>
+    <div id="songInfo" class="songInfoClass">
+        <h1 id="deezerArtistName">Artist Name</h1>
+        <h3 id="deezerArtistSongName">Song Name</h3>
+        <img id="songCover"></img>
+    </div>
 
-        <input id="find-music" type="submit" value="Music Search">
-        <button type="button" id="button1" class="btn btn-outline-primary">Next Song</button>
-    </form>
-
-    <div id="forecast" class="forecast1"></div>
-    
-    <div class="container" style="position: relative; left: 60%;">
+    <!--Container for returning data-->
+    <div class="containerr" id="lyricsID">
         <h1 id="artistName"></h1>
         <h3 id="artistSongName"></h3>
-        <p id="lyricsP" style="width: 30%;"></p>
+       <p id="lyricsP" style="width: 30%;"></p>
     </div>
 
 
