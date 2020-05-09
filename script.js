@@ -1,77 +1,83 @@
 //GLOBAL VAR
+var i = 0
 
-$("#find-music").on("click",function(event){
+//Music search button starts ajax function calls
+$("#findMusicBtn").click(function(event) {
     event.preventDefault();
-    $(".forecast1").empty();
+    var artistName = $("#music-input").val();
+    searchArtistName(artistName);
+});
 
-    var i = 0
-    var artistName =$("#music-input").val();
-
-    //This is DEEZER api call
+//Grabbing the songs by artist name
+function searchArtistName(artistNameSearch) {
     var deezerApi = {
-    "async": true,
-    "crossDomain": true,
-    "url": "https://deezerdevs-deezer.p.rapidapi.com/search?q=" + artistName,
-    "method": "GET",
-    "headers": {
-        "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
-        "x-rapidapi-key": "d8bb7331d7mshcb58195d90da480p15ca06jsn0559dad38ac9"
-    }
-}
-    
-    $.ajax(deezerApi).done(function(response) {
-        console.log(response.data[0].title);
-    
-        $("#button1").on("click",function(event){
-            $(".workP").empty();
-            $(".forecast1").empty();
-            i++
-            var work = $("<div>");
-            var workP = $("<p>");
-            workP.text(JSON.stringify(response.data[i]));
-            var songName = (response.data[i].title);
-            console.log(songName);
-
-        workP.attr("Class", "workP");
-        work.attr('class','work');
-        //($(".work")).append(workP);
-      ($(".forecast1")).append(workP);
-
-
-      var lyricsApi = {
         "async": true,
         "crossDomain": true,
-        "url": "https://canarado-lyrics.p.rapidapi.com/lyrics/" + songName + artistName,
+        "url": "https://deezerdevs-deezer.p.rapidapi.com/search?q=" + artistNameSearch,
+        "method": "GET",
+        "headers": {
+            "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
+            "x-rapidapi-key": "d8bb7331d7mshcb58195d90da480p15ca06jsn0559dad38ac9"
+        }
+    }
+    $.ajax(deezerApi).done(function(response) {
+        console.log(response);
+        getArtistSearchSong();
+
+        $("#nextSongBtn").on("click", function() {
+            getArtistSearchSong();
+        });
+
+        function getArtistSearchSong() {
+            i++;
+            var songName = (response.data[i].title);
+            var songDiv = $("<div>");
+            var songP = $("<p>");
+            $("#deezerArtistName").text(response.data[i].artist.name);
+            $("#deezerArtistSongName").text(songName);
+            // songP.text(JSON.stringify(response.data[i]));
+            // console.log(songName);
+
+            songP.attr("Class", "songP");
+            songDiv.attr('class', 'songDiv');
+            $(".songInfoClass").append(songP);
+
+
+            //Calling songlyrics function
+            getSongLyrics(songName, artistNameSearch);
+        }
+    });
+}
+
+//Calls lyrics api
+function getSongLyrics(songName, artistNameSearch) {
+
+    var lyricsApi = {
+        "async": true,
+        "crossDomain": true,
+        "url": "https://canarado-lyrics.p.rapidapi.com/lyrics/" + songName + artistNameSearch,
         "method": "GET",
         "headers": {
             "x-rapidapi-host": "canarado-lyrics.p.rapidapi.com",
             "x-rapidapi-key": "d8bb7331d7mshcb58195d90da480p15ca06jsn0559dad38ac9"
         }
     }
-    
     $.ajax(lyricsApi).done(function(response) {
-        console.log(response);
-    
+        // console.log(response);
+        displayArtistInfo();
+        displaySongLyrics();
+
         function displayArtistInfo() {
             var displayArtistName = response.content[0].artist;
             var displaySongTitle = response.content[0].title;
             $("#artistName").text(displayArtistName);
             $("#artistSongName").text(displaySongTitle);
         }
-        displayArtistInfo();
-    
+
         function displaySongLyrics() {
             var songLyrics = response.content[0].lyrics;
             $("#lyricsP").text(songLyrics);
         }
-        displaySongLyrics();
-    
-    
-    
+
     });
-            
-        });
-    
-      
-});
-});
+}
