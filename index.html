@@ -9,16 +9,19 @@
 </head>
 
 <body>
-    <form id="music-form">
-        <label for="music-input">Search for a song/artist</label>
-        <input type="text" id="music-input"><br>
+    <!--Container with Search-->
+    <div class="container">
+        <form id="music-form">
+            <label for="music-input">Search for a song/artist</label>
+            <input type="text" id="music-input"><br>
 
-        <input id="find-music" type="submit" value="Music Search">
-        <button type="button" id="button1" class="btn btn-outline-primary">Next Song</button>
-    </form>
+            <input id="findMusicBtn" type="submit" value="Music Search">
+            <button type="button" id="nextSongBtn" class="btn btn-outline-primary">Next Song</button>
+        </form>
+    </div>
+    <div id="songInfo" class="songInfoClass"></div>
 
-    <div id="forecast" class="forecast1"></div>
-    
+    <!--Container for returning data-->
     <div class="container" style="position: relative; left: 60%;">
         <h1 id="artistName"></h1>
         <h3 id="artistSongName"></h3>
