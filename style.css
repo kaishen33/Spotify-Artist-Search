@@ -1,0 +1,18 @@
+body { 
+    background-image: url("image/jack_white_h.jpg");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+
+
+
+
+  #music-form {
+    border: 2px solid white;
+    background-color: white;
+    position: absolute;
+    top: 40%;
+    left: 35%;
+    }

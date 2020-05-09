@@ -28,7 +28,7 @@ $("#find-music").on("click",function(event){
             i++
             var work = $("<div>");
             var workP = $("<p>");
-            workP.text(JSON.stringify(response.data[i]));
+            workP.text(JSON.stringify(response.data[i].title));
             var songName = (response.data[i].title);
             console.log(songName);
 
