@@ -6,11 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>Music Project</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
 <body>
     <!--Container with Search-->
-    <div class="container">
+    <div class="container"></div>
         <form id="music-form">
             <label for="music-input">Search for a song/artist</label>
             <input type="text" id="music-input"><br>
@@ -23,19 +24,21 @@
     <div id="songInfo" class="songInfoClass">
         <h1 id="deezerArtistName">Artist Name</h1>
         <h3 id="deezerArtistSongName">Song Name</h3>
+        <img id="songCover"></img>
     </div>
 
 
     <!--Container for returning data-->
-    <div class="container" style="position: relative; left: 60%;">
+    <div class="containerr" id="lyricsID">
         <h1 id="artistName"></h1>
         <h3 id="artistSongName"></h3>
-        <p id="lyricsP" style="width: 30%;"></p>
+       <p id="lyricsP" style="width: 30%;"></p>
     </div>
 
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="script.js"></script>
 </body>
+
 
 </html>

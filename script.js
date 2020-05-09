@@ -23,10 +23,12 @@ function searchArtistName(artistNameSearch) {
     $.ajax(deezerApi).done(function(response) {
         console.log(response);
         getArtistSearchSong();
+        getArtistSearschCover();
         getUrbanDef(artistNameSearch);
 
         $("#nextSongBtn").on("click", function() {
             getArtistSearchSong();
+            getArtistSearchCover();
         });
 
         function getArtistSearchSong() {
@@ -46,7 +48,16 @@ function searchArtistName(artistNameSearch) {
 
             //Calling songlyrics function
             getSongLyrics(songName, artistNameSearch);
+         }
+         
+        function getArtistSearchCover(){
+            var coverSmall = (response.data[i].album.cover_medium)
+            console.log(coverSmall);
+            $("#songCover").attr("src", coverSmall)
+            
         }
+    
+    
     });
 
     function getUrbanDef(name) {
