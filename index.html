@@ -10,29 +10,49 @@
 </head>
 
 <body>
-    <!--Container with Search-->
-    <div class="container"></div>
-        <form id="music-form">
-            <label for="music-input">Search for a song/artist</label>
-            <input type="text" id="music-input"><br>
+    
+    <!--Container for grid-->
+    <div class="container">
+        <!--Row for search/songInfo/UrbanDictionary-->
+        <div class="row">
 
-            <input id="findMusicBtn" type="submit" value="Music Search">
-            <button type="button" id="nextSongBtn" class="btn btn-outline-primary">Next Song</button>
-        </form>
-    </div>
-    <div id="songInfo" class="songInfoClass">
-        <h1 id="deezerArtistName">Artist Name</h1>
-        <h3 id="deezerArtistSongName">Song Name</h3>
-        <img id="songCover"></img>
-    </div>
+            <!--SongInfo-->
+            <div class="col-sm-12 col-md-4">
+                <div id="songInfo" class="songInfoClass">
+                    <h1 id="deezerArtistName">Artist Name</h1>
+                    <h3 id="deezerArtistSongName">Song Name</h3>
+                    <img id="songCover"></img>
+                </div>
+            </div>
+            
+            <!--Search-->
+            <div class="col-sm-12 col-md-4">
+                <form id="music-form">
+                    <label for="music-input">Search for a song/artist</label>
+                    <input type="text" id="music-input"><br>
 
-    <!--Container for returning data-->
-    <div class="containerr" id="lyricsID">
-        <h1 id="artistName"></h1>
-        <h3 id="artistSongName"></h3>
-       <p id="lyricsP" style="width: 30%;"></p>
-    </div>
+                    <input id="findMusicBtn" type="submit" value="Music Search">
+                    <button type="button" id="nextSongBtn" class="btn btn-outline-primary">Next Song</button>
+                </form>
+            </div>
+        </div>
 
+        <!--row for lyrics-->
+        <div class="row">
+
+            <!--Lyrics-->
+            <div class="col-sm-12">
+                <div class="containerr" id="lyricsID">
+                        <h1 id="artistName"></h1>
+                        <h3 id="artistSongName"></h3>
+                        <p id="lyricsP" style="width: 30%;"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+        
+    
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="script.js"></script>

@@ -10,20 +10,16 @@ body {
     border: 2px solid white;
     background-color: white;
     border-radius: 8px;
+    margin-top: 60%;
     opacity: .8;
-    position: absolute;
-    top: 40%;
-    left: 30%;
-    }
+    margin-bottom: 20px;
+  }
   #music-form::after{
     opacity: .8;
   }
 
 
 #lyricsID {
-  position: relative;
-   left: 60%;
-   bottom: 275px;
   background-color: grey;
   opacity: .7;
 
