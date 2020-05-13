@@ -24,11 +24,9 @@ function searchArtistName(artistNameSearch) {
         console.log(response);
         getArtistSearchSong();
         getArtistSearschCover();
-        getUrbanDef(artistNameSearch);
-
         $("#nextSongBtn").on("click", function() {
             getArtistSearchSong();
-            getArtistSearchCover();
+            getArtistSearschCover();
         });
 
         function getArtistSearchSong() {
@@ -36,8 +34,7 @@ function searchArtistName(artistNameSearch) {
             var songName = (response.data[i].title);
             var songDiv = $("<div>");
             var songP = $("<p>");
-            var deezerArtistName = response.data[i].artist.name;
-            $("#deezerArtistName").text(deezerArtistName);
+            $("#deezerArtistName").text(response.data[i].artist.name);
             $("#deezerArtistSongName").text(songName);
             // songP.text(JSON.stringify(response.data[i]));
             // console.log(songName);
@@ -46,11 +43,12 @@ function searchArtistName(artistNameSearch) {
             songDiv.attr('class', 'songDiv');
             $(".songInfoClass").append(songP);
 
+
             //Calling songlyrics function
             getSongLyrics(songName, artistNameSearch);
          }
          
-        function getArtistSearchCover(){
+        function getArtistSearschCover(){
             var coverSmall = (response.data[i].album.cover_medium)
             console.log(coverSmall);
             $("#songCover").attr("src", coverSmall)
@@ -59,23 +57,6 @@ function searchArtistName(artistNameSearch) {
     
     
     });
-
-    function getUrbanDef(name) {
-        var urbanApi = {
-            "async": true,
-            "crossDomain": true,
-            "url": "https://mashape-community-urban-dictionary.p.rapidapi.com/define?term=" + name,
-            "method": "GET",
-            "headers": {
-                "x-rapidapi-host": "mashape-community-urban-dictionary.p.rapidapi.com",
-                "x-rapidapi-key": "7ac5693631msh1be654ee56cba4ap14b22cjsn1aef1fe207ca"
-            }
-        }
-        $.ajax(urbanApi).done(function(response) {
-            console.log(response);
-            //your code here
-        });
-    }
 }
 
 //Calls lyrics api
