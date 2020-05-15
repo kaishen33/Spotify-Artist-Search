@@ -1,14 +1,17 @@
 //GLOBAL VAR
 var i = 0
-
 //Music search button starts ajax function calls
 $("#findMusicBtn").click(function(event) {
     event.preventDefault();
     var artistName = $("#music-input").val();
     searchArtistName(artistName);
 });
-
-//Grabbing the songs by artist name
+//Next button to grab next response
+$("#nextSongBtn").click(function() {
+    var artistName = $("#music-input").val();
+    searchArtistName(artistName);
+});
+//Calls Deezer API
 function searchArtistName(artistNameSearch) {
     var deezerApi = {
         "async": true,
@@ -21,14 +24,8 @@ function searchArtistName(artistNameSearch) {
         }
     }
     $.ajax(deezerApi).done(function(response) {
-        console.log(response);
         getArtistSearchSong();
-        getArtistSearschCover();
-        $("#nextSongBtn").on("click", function() {
-            getArtistSearchSong();
-            getArtistSearschCover();
-        });
-
+        getArtistSearchCover();
         function getArtistSearchSong() {
             i++;
             var songName = (response.data[i].title);
@@ -36,32 +33,37 @@ function searchArtistName(artistNameSearch) {
             var songP = $("<p>");
             $("#deezerArtistName").text(response.data[i].artist.name);
             $("#deezerArtistSongName").text(songName);
-            // songP.text(JSON.stringify(response.data[i]));
-            // console.log(songName);
-
             songP.attr("Class", "songP");
             songDiv.attr('class', 'songDiv');
             $(".songInfoClass").append(songP);
-
-
             //Calling songlyrics function
             getSongLyrics(songName, artistNameSearch);
-         }
-         
-        function getArtistSearschCover(){
-            var coverSmall = (response.data[i].album.cover_medium)
-            console.log(coverSmall);
-            $("#songCover").attr("src", coverSmall)
-            
         }
-    
-    
+        function getArtistSearchCover() {
+            var coverSmall = (response.data[i].album.cover_medium);
+            $("#songCover").attr("src", coverSmall)
+        }
     });
 }
-
-//Calls lyrics api
+//Calls Urban Dictionary API
+function getUrbanDef(name) {
+    var urbanApi = {
+        "async": true,
+        "crossDomain": true,
+        "url": "https://mashape-community-urban-dictionary.p.rapidapi.com/define?term=" + name,
+        "method": "GET",
+        "headers": {
+            "x-rapidapi-host": "mashape-community-urban-dictionary.p.rapidapi.com",
+            "x-rapidapi-key": "7ac5693631msh1be654ee56cba4ap14b22cjsn1aef1fe207ca"
+        }
+    }
+    $.ajax(urbanApi).done(function(response) {
+        console.log(response);
+        //your code here
+    });
+}
+//Calls Lyrics API
 function getSongLyrics(songName, artistNameSearch) {
-
     var lyricsApi = {
         "async": true,
         "crossDomain": true,
@@ -73,21 +75,17 @@ function getSongLyrics(songName, artistNameSearch) {
         }
     }
     $.ajax(lyricsApi).done(function(response) {
-        // console.log(response);
         displayArtistInfo();
         displaySongLyrics();
-
         function displayArtistInfo() {
             var displayArtistName = response.content[0].artist;
             var displaySongTitle = response.content[0].title;
             $("#artistName").text(displayArtistName);
             $("#artistSongName").text(displaySongTitle);
         }
-
         function displaySongLyrics() {
             var songLyrics = response.content[0].lyrics;
             $("#lyricsP").text(songLyrics);
         }
-
     });
 }
