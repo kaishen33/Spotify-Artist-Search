@@ -102,5 +102,12 @@ form:hover .fa{
   border-radius: 10%;
 }
 
+#urbanDefinition{
+  position: relative;
+  top: 100px;
+  background-color: grey;
+  opacity: .8;
+  
+}
 
 
