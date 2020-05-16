@@ -20,7 +20,7 @@ body {
 
 #lyricsID {
   position: relative;
-  top: 3%;
+  top: 8%;
   background-color: grey;
   opacity: .7;
 
@@ -110,4 +110,11 @@ form:hover .fa{
   
 }
 
+#deezerArtistName{
+  color: blue;
+}
+
+#deezerArtistSongName{
+  color: blue;
+}
 

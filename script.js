@@ -57,9 +57,9 @@ function searchArtistName(artistNameSearch) {
             $.ajax(urbanApi).done(function(response) {
                 console.log(response);
                $("#urbanDefinition").text(response.list[0].definition)
-               $("#urbanDefinition").text(response.list[1].definition)
             });
         }
+        
     });
 }
 
