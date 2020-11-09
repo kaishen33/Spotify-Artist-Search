@@ -1,13 +1,13 @@
 //GLOBAL VAR
 var i = 0
 //Music search button starts ajax function calls
-$("#findMusicBtn").click(function(event) {
+$("#findMusicBtn").click(function (event) {
     event.preventDefault();
     var artistName = $("#music-input").val();
     searchArtistName(artistName);
 });
 //Next button to grab next response
-$("#nextSongBtn").click(function() {
+$("#nextSongBtn").click(function () {
     var artistName = $("#music-input").val();
     searchArtistName(artistName);
 });
@@ -23,7 +23,7 @@ function searchArtistName(artistNameSearch) {
             "x-rapidapi-key": "d8bb7331d7mshcb58195d90da480p15ca06jsn0559dad38ac9"
         }
     }
-    $.ajax(deezerApi).done(function(response) {
+    $.ajax(deezerApi).done(function (response) {
         getArtistSearchSong();
         getArtistSearchCover();
         function getArtistSearchSong() {
@@ -57,7 +57,7 @@ function getUrbanDef(name) {
             "x-rapidapi-key": "7ac5693631msh1be654ee56cba4ap14b22cjsn1aef1fe207ca"
         }
     }
-    $.ajax(urbanApi).done(function(response) {
+    $.ajax(urbanApi).done(function (response) {
         console.log(response);
         //your code here
     });
@@ -74,7 +74,7 @@ function getSongLyrics(songName, artistNameSearch) {
             "x-rapidapi-key": "d8bb7331d7mshcb58195d90da480p15ca06jsn0559dad38ac9"
         }
     }
-    $.ajax(lyricsApi).done(function(response) {
+    $.ajax(lyricsApi).done(function (response) {
         displayArtistInfo();
         displaySongLyrics();
         function displayArtistInfo() {
@@ -89,3 +89,6 @@ function getSongLyrics(songName, artistNameSearch) {
         }
     });
 }
+
+
+// first commit 
