@@ -89,6 +89,3 @@ function getSongLyrics(songName, artistNameSearch) {
         }
     });
 }
-
-
-// first commit 
