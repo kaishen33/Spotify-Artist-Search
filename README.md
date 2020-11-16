@@ -41,7 +41,7 @@ Browse Page:
 ### Contributors
 
 * Isaiah Edwards
-* SImon Anthony 
+* Anthony Simone
 * KaiWei Shen
 
 ### Future Development
