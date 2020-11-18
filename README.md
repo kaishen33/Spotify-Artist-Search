@@ -1,6 +1,6 @@
 # SearchBeats
 
-Searchbeats is a website to find artist and assosiated albums, like a music dictionary.
+Searchbeats is a music library finding artist, music, and album associated with each other.
 
 ### Overview
 
