@@ -2,6 +2,10 @@
 
 Searchbeats is a music library finding artist, music, and album associated with each other.
 
+### Link
+
+For the [finished web page](https://kaishen33.github.io/Spotify-Artist-Search/index.html)
+
 ### Overview
 
 It is an open website to find song, artist, or album and bring out everything associated with the search. Anything typed into the searchbar will bring out artist definition, famous albums, and songs
@@ -43,6 +47,10 @@ Browse Page:
 * Isaiah Edwards
 * Anthony Simone
 * KaiWei Shen
+
+### Launch
+
+Date [application](https://kaishen33.github.io/Spotify-Artist-Search/index.html) releases: `May 19th, 2020`
 
 ### Future Development
 
